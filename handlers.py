@@ -25,3 +25,11 @@ async def transribe(message: Message):
     
     if not voice:
         await message.answer('нужно ответить именно на ГС')
+        return
+
+    file = await message.bot.get_file(voice.file_id)
+
+    await message.bot.download_file(
+        file.file_path,
+        destination='voices/input.ogg'
+    )

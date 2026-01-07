@@ -8,7 +8,7 @@ config: Config = load_config('.env')
 
 bot = Bot(token=config.bot.token)
 dp = Dispatcher()
-dp.message.middleware(MyMiddleware())
+
 
 async def main():
     dp.include_router(router)
