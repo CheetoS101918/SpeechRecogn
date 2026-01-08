@@ -47,7 +47,7 @@ async def transribe(message: Message):
 
     await message.reply_to_message.reply(result)
 
-    os.remove(f'voices/{file_id}')
+#    os.remove(f'voices/{file_id}')
 
 
 
