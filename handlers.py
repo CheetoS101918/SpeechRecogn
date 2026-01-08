@@ -1,10 +1,9 @@
 import asyncio
 import os
 from aiogram.filters import CommandStart, Command
-from aiogram.types import Message
-from aiogram.enums import ChatAction
+from aiogram.types import Message, ReplyKeyboardRemove
 from concurrent.futures import ThreadPoolExecutor
-from whisper_test import speech_to_text
+from fast_whisp_test import processor
 from aiogram import F, Router
 
 
@@ -17,7 +16,8 @@ router = Router()
 @router.message(CommandStart())
 async def cmd_start(message: Message):
     await message.answer(
-        'Привет! Я умею распознавать речь в гс! Просто ответь на нужное тебе гс командой /run!'
+        'Привет! Я умею распознавать речь в гс! Просто ответь на нужное тебе гс командой /run!',
+        reply_markup=ReplyKeyboardRemove()
     )
 
 
@@ -42,10 +42,16 @@ async def transribe(message: Message):
         destination=f'voices/{file_id}.ogg'
     )
 
-    loop = asyncio.get_running_loop()
-    result = await loop.run_in_executor(pool, speech_to_text, file_id)
+    # Отправляем статус "печатает..."
+    await message.bot.send_chat_action(
+        chat_id=message.chat.id,
+        action="typing"
+    )
 
-    await message.reply_to_message.reply(result)
+    loop = asyncio.get_running_loop()
+    result = await loop.run_in_executor(pool, processor.transcribe, file_id)
+
+    await message.reply_to_message.reply("".join(result))
 
 #    os.remove(f'voices/{file_id}')
 

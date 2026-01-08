@@ -1,0 +1,59 @@
+python run.py                                                                                   .venv 3.12.12  00:31 
+DEBUG:asyncio:Using selector: EpollSelector
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @pizdec_nahoi_blyat_bot id=7977546126 - 'Piece of sh!t'
+INFO:aiogram.event:Update id=262980858 is handled. Duration 241 ms by bot id=7977546126
+INFO:aiogram.event:Update id=262980859 is handled. Duration 258 ms by bot id=7977546126
+INFO:aiogram.event:Update id=262980857 is handled. Duration 285 ms by bot id=7977546126
+🔄 Загрузка модели Whisper...
+DEBUG:httpcore.connection:connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=None socket_options=None
+DEBUG:httpcore.connection:connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f3bba3a0740>
+DEBUG:httpcore.connection:start_tls.started ssl_context=<ssl.SSLContext object at 0x7f3bba378e50> server_hostname='huggingface.co' timeout=None
+DEBUG:httpcore.connection:start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f3bba75b9b0>
+DEBUG:httpcore.http11:send_request_headers.started request=<Request [b'GET']>
+DEBUG:httpcore.http11:send_request_headers.complete
+DEBUG:httpcore.http11:send_request_body.started request=<Request [b'GET']>
+DEBUG:httpcore.http11:send_request_body.complete
+DEBUG:httpcore.http11:receive_response_headers.started request=<Request [b'GET']>
+DEBUG:httpcore.http11:receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'4584'), (b'Connection', b'keep-alive'), (b'Date', b'Thu, 08 Jan 2026 21:34:15 GMT'), (b'ETag', b'W/"11e8-2VBjY87oncd7AwsRruJrp8JGYzA"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-696022d7-7470e2893fe8d5931371860b;9e41d99c-b4e3-4420-baa3-56664128dbef'), (b'RateLimit', b'"api";r=499;t=105'), (b'RateLimit-Policy', b'"fixed window";"api";q=500;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 4737976a27f5e96a307bca1f8a140466.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'HEL51-P2'), (b'X-Amz-Cf-Id', b'biGhcU4Snje0eaHTvgFtHny_6PDdCxfmuAhGq3tojN_4Qlo163_NkA==')])
+INFO:httpx:HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+DEBUG:httpcore.http11:receive_response_body.started request=<Request [b'GET']>
+DEBUG:httpcore.http11:receive_response_body.complete
+DEBUG:httpcore.http11:response_closed.started
+DEBUG:httpcore.http11:response_closed.complete
+🔄 Загрузка модели Whisper...
+DEBUG:httpcore.http11:send_request_headers.started request=<Request [b'GET']>
+DEBUG:httpcore.http11:send_request_headers.complete
+DEBUG:httpcore.http11:send_request_body.started request=<Request [b'GET']>
+DEBUG:httpcore.http11:send_request_body.complete
+DEBUG:httpcore.http11:receive_response_headers.started request=<Request [b'GET']>
+DEBUG:httpcore.http11:receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'4584'), (b'Connection', b'keep-alive'), (b'Date', b'Thu, 08 Jan 2026 21:34:20 GMT'), (b'ETag', b'W/"11e8-2VBjY87oncd7AwsRruJrp8JGYzA"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-696022dc-626b3be7457094e714daa096;1235ca46-73ec-4ee4-adb5-f0b1d5e9d799'), (b'RateLimit', b'"api";r=498;t=100'), (b'RateLimit-Policy', b'"fixed window";"api";q=500;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 4737976a27f5e96a307bca1f8a140466.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'HEL51-P2'), (b'X-Amz-Cf-Id', b'9Axe3wegqlLjX-7vxkofFnW7unmYCTrwCdU5Mi4cBNB7UMM3KtTgAA==')])
+INFO:httpx:HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+DEBUG:httpcore.http11:receive_response_body.started request=<Request [b'GET']>
+DEBUG:httpcore.http11:receive_response_body.complete
+DEBUG:httpcore.http11:response_closed.started
+DEBUG:httpcore.http11:response_closed.complete
+✅ Модель загружена!
+🔊 Начинаю расшифровку AwACAgIAAxkBAAICpWla6Sh_0HuQb7eVfdscCaRhIrkJAAJKhQACT5DASjD-eUDq5IabOAQ...
+✅ Модель загружена!
+🔊 Начинаю расшифровку AwACAgIAAxkBAAICo2la6KUv9G-b_x9wicxszx6juuPdAAI-mAACkrTYSppopjkcoiLLOAQ...
+INFO:faster_whisper:Processing audio with duration 00:04.774
+INFO:faster_whisper:Processing audio with duration 00:05.614
+DEBUG:faster_whisper:Processing segment at 00:00.000
+DEBUG:faster_whisper:Processing segment at 00:00.000
+[0.00s -> 4.36s]  Теперь текст чуть посложнее, будет размазаны слова.
+🔊 Начинаю расшифровку AwACAgIAAxkBAAICpWla6Sh_0HuQb7eVfdscCaRhIrkJAAJKhQACT5DASjD-eUDq5IabOAQ...
+INFO:aiogram.event:Update id=262980861 is handled. Duration 55270 ms by bot id=7977546126
+INFO:faster_whisper:Processing audio with duration 00:05.614
+DEBUG:faster_whisper:Processing segment at 00:00.000
+[0.00s -> 3.00s]  Да, мужичок сидел этот, сука, этот добрый.
+[3.00s -> 5.00s]  Боже, чтоб нахуй не выходил, блядь, ебаный тупой ревый.
+INFO:aiogram.event:Update id=262980860 is handled. Duration 69951 ms by bot id=7977546126
+[0.00s -> 3.00s]  Да, мужичок сидел этот, сука, этот добрый.
+[3.00s -> 5.00s]  Боже, чтоб нахуй не выходил, блядь, ебаный тупой ревый.
+INFO:aiogram.event:Update id=262980862 is handled. Duration 89830 ms by bot id=7977546126
+^CWARNING:aiogram.dispatcher:Received SIGINT signal
+INFO:aiogram.dispatcher:Polling stopped for bot @pizdec_nahoi_blyat_bot id=7977546126 - 'Piece of sh!t'
+INFO:aiogram.dispatcher:Polling stopped
+DEBUG:httpcore.connection:close.started
+DEBUG:httpcore.connection:close.complete

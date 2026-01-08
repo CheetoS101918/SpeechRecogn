@@ -3,6 +3,7 @@ import logging
 from aiogram import Dispatcher, Bot
 from handlers import router
 from config import Config, load_config
+from fast_whisp_test import processor
 
 config: Config = load_config('.env')
 
@@ -11,6 +12,7 @@ dp = Dispatcher()
 
 
 async def main():
+    processor.load_model()
     dp.include_router(router)
     await dp.start_polling(bot)
 
