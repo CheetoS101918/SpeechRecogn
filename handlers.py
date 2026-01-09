@@ -6,11 +6,10 @@ from concurrent.futures import ThreadPoolExecutor
 from fast_whisp_test import processor
 from aiogram import F, Router
 
+MAX_VOICE_DURATION = 60
 
 pool = ThreadPoolExecutor(max_workers=1) 
-
 router = Router()
-
 
 @router.message(CommandStart())
 async def cmd_start(message: Message):
@@ -28,6 +27,9 @@ async def transribe(message: Message):
         return
 
     voice = message.reply_to_message.voice
+
+    if voice.duration > MAX_VOICE_DURATION:
+        await message.reply_to_message.reply(f'гс должно быть не более {MAX_VOICE_DURATION} сек')
     
     if not voice:
         await message.answer('нужно ответить именно на ГС')
@@ -52,7 +54,6 @@ async def transribe(message: Message):
 
     await message.reply_to_message.reply("".join(result))
 
-#    os.remove(f'voices/{file_id}')
-
+#    os.unlink(f'voices/{file_id}')
 
 
