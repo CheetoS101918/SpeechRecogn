@@ -24,7 +24,6 @@ import threading
 #     return chunks
 
 
-
 class WhisperProcessor:
     def __init__(self):
         self.model = None
@@ -35,13 +34,15 @@ class WhisperProcessor:
             if self.model is None:
                 print("🔄 Загрузка модели Whisper...")
                 self.model = WhisperModel(
-#                    "large-v3", 
+    #                    "large-v3", 
                     'medium',
                     device="cpu", 
                     compute_type="int8", 
-                    cpu_threads=3
+                    cpu_threads=8
                 )
                 print("✅ Модель загружена!")
+            else:
+                print("модель уже загружена!")
         
     def transcribe(self, file_id):
         """Транскрибация с уже загруженной моделью"""
@@ -58,11 +59,13 @@ class WhisperProcessor:
         )
         
         chunks = []
-        for segment in segments:
-            print(f"[{segment.start:.2f}s -> {segment.end:.2f}s] {segment.text}")
-            chunks.append(segment.text)
-        
-        return chunks
+        try:
+            for segment in segments:
+                print(f"[{segment.start:.2f}s -> {segment.end:.2f}s] {segment.text}")
+                chunks.append(segment.text)
+            return chunks
+        except Exception as e:
+            return [f'an error occured: {e}']
 
 
 # Создаём глобальный экземпляр

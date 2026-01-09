@@ -4,9 +4,80 @@
 
 
 ================================================================================
+ФАЙЛ: requirements.txt
+ПОЛНЫЙ ПУТЬ: /home/slay/test_aio3/requirements.txt
+РАЗМЕР: 1238 байт
+================================================================================
+
+aiofiles==25.1.0
+aiogram==3.24.0
+aiohappyeyeballs==2.6.1
+aiohttp==3.13.3
+aiosignal==1.4.0
+annotated-types==0.7.0
+anyio==4.12.1
+attrs==25.4.0
+av==16.0.1
+certifi==2026.1.4
+charset-normalizer==3.4.4
+click==8.3.1
+coloredlogs==15.0.1
+ctranslate2==4.6.3
+environs==14.5.0
+faster-whisper==1.2.1
+filelock==3.20.2
+flatbuffers==25.12.19
+frozenlist==1.8.0
+fsspec==2025.12.0
+h11==0.16.0
+hf-xet==1.2.0
+httpcore==1.0.9
+httpx==0.28.1
+huggingface_hub==1.2.4
+humanfriendly==10.0
+idna==3.11
+Jinja2==3.1.6
+llvmlite==0.46.0
+magic-filter==1.0.12
+MarkupSafe==3.0.3
+marshmallow==4.2.0
+more-itertools==10.8.0
+mpmath==1.3.0
+multidict==6.7.0
+networkx==3.6.1
+numba==0.63.1
+numpy==2.3.5
+onnxruntime==1.23.2
+openai-whisper==20250625
+packaging==25.0
+propcache==0.4.1
+protobuf==6.33.2
+pydantic==2.12.5
+pydantic_core==2.41.5
+python-dotenv==1.2.1
+PyYAML==6.0.3
+regex==2025.11.3
+requests==2.32.5
+setuptools==80.9.0
+shellingham==1.5.4
+sympy==1.13.1
+tiktoken==0.12.0
+tokenizers==0.22.2
+torch @ https://download.pytorch.org/whl/cpu/torch-2.5.1%2Bcpu-cp312-cp312-linux_x86_64.whl#sha256=4856f9d6925121d13c2df07aa7580b767f449dfe71ae5acde9c27535d5da4840
+tqdm==4.67.1
+triton==3.5.1
+typer-slim==0.21.1
+typing-inspection==0.4.2
+typing_extensions==4.15.0
+urllib3==2.6.2
+yarl==1.22.0
+
+
+
+================================================================================
 ФАЙЛ: run.py
 ПОЛНЫЙ ПУТЬ: /home/slay/test_aio3/run.py
-РАЗМЕР: 567 байт
+РАЗМЕР: 569 байт
 ================================================================================
 
 import asyncio
@@ -23,7 +94,7 @@ dp = Dispatcher()
 
 
 async def main():
-    processor.load_model
+    processor.load_model()
     dp.include_router(router)
     await dp.start_polling(bot)
 
@@ -34,73 +105,6 @@ if __name__ == '__main__':
         asyncio.run(main())
     except KeyboardInterrupt:
         print('Stop')
-
-
-================================================================================
-ФАЙЛ: temp.txt
-ПОЛНЫЙ ПУТЬ: /home/slay/test_aio3/temp.txt
-РАЗМЕР: 6792 байт
-================================================================================
-
-python run.py                                                                                   .venv 3.12.12  00:31 
-DEBUG:asyncio:Using selector: EpollSelector
-INFO:aiogram.dispatcher:Start polling
-INFO:aiogram.dispatcher:Run polling for bot @pizdec_nahoi_blyat_bot id=7977546126 - 'Piece of sh!t'
-INFO:aiogram.event:Update id=262980858 is handled. Duration 241 ms by bot id=7977546126
-INFO:aiogram.event:Update id=262980859 is handled. Duration 258 ms by bot id=7977546126
-INFO:aiogram.event:Update id=262980857 is handled. Duration 285 ms by bot id=7977546126
-🔄 Загрузка модели Whisper...
-DEBUG:httpcore.connection:connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=None socket_options=None
-DEBUG:httpcore.connection:connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f3bba3a0740>
-DEBUG:httpcore.connection:start_tls.started ssl_context=<ssl.SSLContext object at 0x7f3bba378e50> server_hostname='huggingface.co' timeout=None
-DEBUG:httpcore.connection:start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7f3bba75b9b0>
-DEBUG:httpcore.http11:send_request_headers.started request=<Request [b'GET']>
-DEBUG:httpcore.http11:send_request_headers.complete
-DEBUG:httpcore.http11:send_request_body.started request=<Request [b'GET']>
-DEBUG:httpcore.http11:send_request_body.complete
-DEBUG:httpcore.http11:receive_response_headers.started request=<Request [b'GET']>
-DEBUG:httpcore.http11:receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'4584'), (b'Connection', b'keep-alive'), (b'Date', b'Thu, 08 Jan 2026 21:34:15 GMT'), (b'ETag', b'W/"11e8-2VBjY87oncd7AwsRruJrp8JGYzA"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-696022d7-7470e2893fe8d5931371860b;9e41d99c-b4e3-4420-baa3-56664128dbef'), (b'RateLimit', b'"api";r=499;t=105'), (b'RateLimit-Policy', b'"fixed window";"api";q=500;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 4737976a27f5e96a307bca1f8a140466.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'HEL51-P2'), (b'X-Amz-Cf-Id', b'biGhcU4Snje0eaHTvgFtHny_6PDdCxfmuAhGq3tojN_4Qlo163_NkA==')])
-INFO:httpx:HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
-DEBUG:httpcore.http11:receive_response_body.started request=<Request [b'GET']>
-DEBUG:httpcore.http11:receive_response_body.complete
-DEBUG:httpcore.http11:response_closed.started
-DEBUG:httpcore.http11:response_closed.complete
-🔄 Загрузка модели Whisper...
-DEBUG:httpcore.http11:send_request_headers.started request=<Request [b'GET']>
-DEBUG:httpcore.http11:send_request_headers.complete
-DEBUG:httpcore.http11:send_request_body.started request=<Request [b'GET']>
-DEBUG:httpcore.http11:send_request_body.complete
-DEBUG:httpcore.http11:receive_response_headers.started request=<Request [b'GET']>
-DEBUG:httpcore.http11:receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'4584'), (b'Connection', b'keep-alive'), (b'Date', b'Thu, 08 Jan 2026 21:34:20 GMT'), (b'ETag', b'W/"11e8-2VBjY87oncd7AwsRruJrp8JGYzA"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-696022dc-626b3be7457094e714daa096;1235ca46-73ec-4ee4-adb5-f0b1d5e9d799'), (b'RateLimit', b'"api";r=498;t=100'), (b'RateLimit-Policy', b'"fixed window";"api";q=500;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 4737976a27f5e96a307bca1f8a140466.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'HEL51-P2'), (b'X-Amz-Cf-Id', b'9Axe3wegqlLjX-7vxkofFnW7unmYCTrwCdU5Mi4cBNB7UMM3KtTgAA==')])
-INFO:httpx:HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
-DEBUG:httpcore.http11:receive_response_body.started request=<Request [b'GET']>
-DEBUG:httpcore.http11:receive_response_body.complete
-DEBUG:httpcore.http11:response_closed.started
-DEBUG:httpcore.http11:response_closed.complete
-✅ Модель загружена!
-🔊 Начинаю расшифровку AwACAgIAAxkBAAICpWla6Sh_0HuQb7eVfdscCaRhIrkJAAJKhQACT5DASjD-eUDq5IabOAQ...
-✅ Модель загружена!
-🔊 Начинаю расшифровку AwACAgIAAxkBAAICo2la6KUv9G-b_x9wicxszx6juuPdAAI-mAACkrTYSppopjkcoiLLOAQ...
-INFO:faster_whisper:Processing audio with duration 00:04.774
-INFO:faster_whisper:Processing audio with duration 00:05.614
-DEBUG:faster_whisper:Processing segment at 00:00.000
-DEBUG:faster_whisper:Processing segment at 00:00.000
-[0.00s -> 4.36s]  Теперь текст чуть посложнее, будет размазаны слова.
-🔊 Начинаю расшифровку AwACAgIAAxkBAAICpWla6Sh_0HuQb7eVfdscCaRhIrkJAAJKhQACT5DASjD-eUDq5IabOAQ...
-INFO:aiogram.event:Update id=262980861 is handled. Duration 55270 ms by bot id=7977546126
-INFO:faster_whisper:Processing audio with duration 00:05.614
-DEBUG:faster_whisper:Processing segment at 00:00.000
-[0.00s -> 3.00s]  Да, мужичок сидел этот, сука, этот добрый.
-[3.00s -> 5.00s]  Боже, чтоб нахуй не выходил, блядь, ебаный тупой ревый.
-INFO:aiogram.event:Update id=262980860 is handled. Duration 69951 ms by bot id=7977546126
-[0.00s -> 3.00s]  Да, мужичок сидел этот, сука, этот добрый.
-[3.00s -> 5.00s]  Боже, чтоб нахуй не выходил, блядь, ебаный тупой ревый.
-INFO:aiogram.event:Update id=262980862 is handled. Duration 89830 ms by bot id=7977546126
-^CWARNING:aiogram.dispatcher:Received SIGINT signal
-INFO:aiogram.dispatcher:Polling stopped for bot @pizdec_nahoi_blyat_bot id=7977546126 - 'Piece of sh!t'
-INFO:aiogram.dispatcher:Polling stopped
-DEBUG:httpcore.connection:close.started
-DEBUG:httpcore.connection:close.complete
 
 
 ================================================================================
@@ -126,11 +130,11 @@ def speech_to_text(file_id):
 ================================================================================
 ФАЙЛ: fast_whisp_test.py
 ПОЛНЫЙ ПУТЬ: /home/slay/test_aio3/fast_whisp_test.py
-РАЗМЕР: 2193 байт
+РАЗМЕР: 2294 байт
 ================================================================================
 
 from faster_whisper import WhisperModel
-
+import threading
 
 # def faster_transcribe(file_id):
 #     # compute_type="int8" — магия оптимизации (сжимает модель, чтобы работала быстрее на CPU)
@@ -159,19 +163,21 @@ from faster_whisper import WhisperModel
 class WhisperProcessor:
     def __init__(self):
         self.model = None
+        self._lock = threading.Lock()
     
     def load_model(self):
-        """Загружает модель один раз при старте"""
-        if self.model is None:
-            print("🔄 Загрузка модели Whisper...")
-            self.model = WhisperModel(
-                "large-v3", 
-                device="cpu", 
-                compute_type="int8", 
-                cpu_threads=2
-            )
-            print("✅ Модель загружена!")
-    
+        with self._lock:
+            if self.model is None:
+                print("🔄 Загрузка модели Whisper...")
+                self.model = WhisperModel(
+    #                    "large-v3", 
+                    'medium',
+                    device="cpu", 
+                    compute_type="int8", 
+                    cpu_threads=3
+                )
+                print("✅ Модель загружена!")
+        
     def transcribe(self, file_id):
         """Транскрибация с уже загруженной моделью"""
         if self.model is None:
@@ -182,7 +188,8 @@ class WhisperProcessor:
         segments, info = self.model.transcribe(
             f"voices/{file_id}.ogg",
             beam_size=5,
-            language='ru'
+            language='ru',
+            vad_filter=True
         )
         
         chunks = []
@@ -502,16 +509,14 @@ def load_config(path: str | None = None) -> Config:
 ================================================================================
 ФАЙЛ: handlers.py
 ПОЛНЫЙ ПУТЬ: /home/slay/test_aio3/handlers.py
-РАЗМЕР: 1680 байт
+РАЗМЕР: 1667 байт
 ================================================================================
 
 import asyncio
 import os
 from aiogram.filters import CommandStart, Command
-from aiogram.types import Message
-from aiogram.enums import ChatAction
+from aiogram.types import Message, ReplyKeyboardRemove
 from concurrent.futures import ThreadPoolExecutor
-#from whisper_test import speech_to_text
 from fast_whisp_test import processor
 from aiogram import F, Router
 
@@ -525,7 +530,8 @@ router = Router()
 @router.message(CommandStart())
 async def cmd_start(message: Message):
     await message.answer(
-        'Привет! Я умею распознавать речь в гс! Просто ответь на нужное тебе гс командой /run!'
+        'Привет! Я умею распознавать речь в гс! Просто ответь на нужное тебе гс командой /run!',
+        reply_markup=ReplyKeyboardRemove()
     )
 
 

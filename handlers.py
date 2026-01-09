@@ -7,8 +7,7 @@ from fast_whisp_test import processor
 from aiogram import F, Router
 
 
-
-pool = ThreadPoolExecutor(max_workers=2) 
+pool = ThreadPoolExecutor(max_workers=1) 
 
 router = Router()
 
