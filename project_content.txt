@@ -130,7 +130,7 @@ def speech_to_text(file_id):
 ================================================================================
 ФАЙЛ: fast_whisp_test.py
 ПОЛНЫЙ ПУТЬ: /home/slay/test_aio3/fast_whisp_test.py
-РАЗМЕР: 2294 байт
+РАЗМЕР: 2473 байт
 ================================================================================
 
 from faster_whisper import WhisperModel
@@ -159,7 +159,6 @@ import threading
 #     return chunks
 
 
-
 class WhisperProcessor:
     def __init__(self):
         self.model = None
@@ -174,9 +173,11 @@ class WhisperProcessor:
                     'medium',
                     device="cpu", 
                     compute_type="int8", 
-                    cpu_threads=3
+                    cpu_threads=8
                 )
                 print("✅ Модель загружена!")
+            else:
+                print("модель уже загружена!")
         
     def transcribe(self, file_id):
         """Транскрибация с уже загруженной моделью"""
@@ -193,11 +194,13 @@ class WhisperProcessor:
         )
         
         chunks = []
-        for segment in segments:
-            print(f"[{segment.start:.2f}s -> {segment.end:.2f}s] {segment.text}")
-            chunks.append(segment.text)
-        
-        return chunks
+        try:
+            for segment in segments:
+                print(f"[{segment.start:.2f}s -> {segment.end:.2f}s] {segment.text}")
+                chunks.append(segment.text)
+            return chunks
+        except Exception as e:
+            return [f'an error occured: {e}']
 
 
 # Создаём глобальный экземпляр
@@ -509,7 +512,7 @@ def load_config(path: str | None = None) -> Config:
 ================================================================================
 ФАЙЛ: handlers.py
 ПОЛНЫЙ ПУТЬ: /home/slay/test_aio3/handlers.py
-РАЗМЕР: 1667 байт
+РАЗМЕР: 1851 байт
 ================================================================================
 
 import asyncio
@@ -520,12 +523,10 @@ from concurrent.futures import ThreadPoolExecutor
 from fast_whisp_test import processor
 from aiogram import F, Router
 
+MAX_VOICE_DURATION = 60
 
-
-pool = ThreadPoolExecutor(max_workers=2) 
-
+pool = ThreadPoolExecutor(max_workers=1) 
 router = Router()
-
 
 @router.message(CommandStart())
 async def cmd_start(message: Message):
@@ -543,6 +544,9 @@ async def transribe(message: Message):
         return
 
     voice = message.reply_to_message.voice
+
+    if voice.duration > MAX_VOICE_DURATION:
+        await message.reply_to_message.reply(f'гс должно быть не более {MAX_VOICE_DURATION} сек')
     
     if not voice:
         await message.answer('нужно ответить именно на ГС')
@@ -567,8 +571,7 @@ async def transribe(message: Message):
 
     await message.reply_to_message.reply("".join(result))
 
-#    os.remove(f'voices/{file_id}')
-
+    os.remove(f'voices/{file_id}')
 
 
 
@@ -577,7 +580,7 @@ async def transribe(message: Message):
 ================================================================================
 ФАЙЛ: .gitignore
 ПОЛНЫЙ ПУТЬ: /home/slay/test_aio3/.gitignore
-РАЗМЕР: 45 байт
+РАЗМЕР: 53 байт
 ================================================================================
 
 .venv
@@ -585,4 +588,5 @@ async def transribe(message: Message):
 __pycache__/
 voices/
 flows_test.py
+test.py
 

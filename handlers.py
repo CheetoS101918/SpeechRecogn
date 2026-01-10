@@ -54,6 +54,6 @@ async def transribe(message: Message):
 
     await message.reply_to_message.reply("".join(result))
 
-#    os.unlink(f'voices/{file_id}')
+    os.remove(f'voices/{file_id}.ogg')
 
 

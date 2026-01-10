@@ -3,3 +3,5 @@
 __pycache__/
 voices/
 flows_test.py
+test.py
+scanner.py
