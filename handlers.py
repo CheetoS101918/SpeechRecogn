@@ -6,10 +6,11 @@ from concurrent.futures import ThreadPoolExecutor
 from fast_whisp_test import processor
 from aiogram import F, Router
 
-MAX_VOICE_DURATION = 60
 
+MAX_VOICE_DURATION = 60
 pool = ThreadPoolExecutor(max_workers=1) 
 router = Router()
+
 
 @router.message(CommandStart())
 async def cmd_start(message: Message):
@@ -20,7 +21,7 @@ async def cmd_start(message: Message):
 
 
 @router.message(Command('run'))
-async def transribe(message: Message):
+async def transcribe(message: Message):
 
     if not message.reply_to_message:
         await message.answer('нужно именно ОТВЕТИТЬ на гс командой /run чтобы я понял, какое конкретно гс тебе нужно')
@@ -28,8 +29,8 @@ async def transribe(message: Message):
 
     voice = message.reply_to_message.voice
 
-    if voice.duration > MAX_VOICE_DURATION:
-        await message.reply_to_message.reply(f'гс должно быть не более {MAX_VOICE_DURATION} сек')
+    # if voice.duration > MAX_VOICE_DURATION:
+    #     await message.reply_to_message.reply(f'гс должно быть не более {MAX_VOICE_DURATION} сек')
     
     if not voice:
         await message.answer('нужно ответить именно на ГС')
@@ -49,10 +50,13 @@ async def transribe(message: Message):
         action="typing"
     )
 
-    loop = asyncio.get_running_loop()
-    result = await loop.run_in_executor(pool, processor.transcribe, file_id)
-
-    await message.reply_to_message.reply("".join(result))
+    try:
+        loop = asyncio.get_running_loop()
+        result = await loop.run_in_executor(pool, processor.transcribe, file_id)
+        await message.reply_to_message.reply("".join(result))
+    except Exception as e:
+        print(f'an error occured during tanscribition: {e}')
+        await message.reply_to_message.reply('ой, что-то пошло не так(\nприносим извинения за временные неудобства\nповторите попытку чуть позже')
 
     os.remove(f'voices/{file_id}.ogg')
 

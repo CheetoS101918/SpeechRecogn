@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import os
 from aiogram import Dispatcher, Bot
 from handlers import router
 from config import Config, load_config
@@ -20,6 +21,7 @@ async def main():
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG) #, filemode='a', filename='lgg.log'
     try:
+        os.mkdir('voices', exist_ok=True)
         asyncio.run(main())
     except KeyboardInterrupt:
         print('Stop')
