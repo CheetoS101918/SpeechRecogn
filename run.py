@@ -28,7 +28,8 @@ if __name__ == '__main__':
     ]
 )
     try:
-        os.mkdir('voices', exist_ok=True)
+        if not os.path.isdir('voices'):
+            os.mkdir('voices')
         asyncio.run(main())
     except KeyboardInterrupt:
         print('Stop')
