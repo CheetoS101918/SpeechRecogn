@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import os
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, ReplyKeyboardRemove
@@ -11,17 +12,21 @@ MAX_VOICE_DURATION = 60
 pool = ThreadPoolExecutor(max_workers=1) 
 router = Router()
 
+logger = logging.getLogger(__name__) # __name__ автоматически даст имя модуля: 'fast_whisp_test'
+
 
 @router.message(CommandStart())
 async def cmd_start(message: Message):
     await message.answer(
-        'Привет! Я умею распознавать речь в гс! Просто ответь на нужное тебе гс командой /run!',
+        'Привет! Я умею распознавать речь в гс! Просто перешли сюда нужное тебе гс и ответь на него командой /run!',
         reply_markup=ReplyKeyboardRemove()
     )
 
 
 @router.message(Command('run'))
 async def transcribe(message: Message):
+
+    logger.info(f'recieved message from {message.from_user.id}')
 
     if not message.reply_to_message:
         await message.answer('нужно именно ОТВЕТИТЬ на гс командой /run чтобы я понял, какое конкретно гс тебе нужно')
@@ -39,10 +44,14 @@ async def transcribe(message: Message):
     file_id = voice.file_id
     file = await message.bot.get_file(file_id)
 
-    await message.bot.download_file(
-        file.file_path,
-        destination=f'voices/{file_id}.ogg'
-    )
+    try:
+        await message.bot.download_file(
+            file.file_path,
+            destination=f'voices/{file_id}.ogg'
+        )
+        logger.info(f'file {file_id} successfully downloaded')
+    except Exception as e:
+        logging.error(f'AN ERROR OCCURED WHILE DOWNLOADING file {file_id}: {e}')
 
     # Отправляем статус "печатает..."
     await message.bot.send_chat_action(
@@ -55,9 +64,9 @@ async def transcribe(message: Message):
         result = await loop.run_in_executor(pool, processor.transcribe, file_id)
         await message.reply_to_message.reply("".join(result))
     except Exception as e:
-        print(f'an error occured during tanscribition: {e}')
+        logger.error(f'AN ERROR OCCURED WHILE TRANCRIBITION: {e}')
         await message.reply_to_message.reply('ой, что-то пошло не так(\nприносим извинения за временные неудобства\nповторите попытку чуть позже')
-
-    os.remove(f'voices/{file_id}.ogg')
+    finally:
+        os.remove(f'voices/{file_id}.ogg')
 
 

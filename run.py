@@ -19,9 +19,18 @@ async def main():
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG) #, filemode='a', filename='lgg.log'
+    logging.basicConfig(
+    level=logging.INFO,  # Уровень важности: INFO и выше будут записываться
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', # Формат сообщения
+    handlers=[
+        logging.StreamHandler(), # Вывод в консоль
+        logging.FileHandler('bot.log') 
+    ]
+)
     try:
         os.mkdir('voices', exist_ok=True)
         asyncio.run(main())
     except KeyboardInterrupt:
         print('Stop')
+    except Exception as e:
+        logging.critical("Критическая ошибка при запуске бота!", exc_info=True)  
