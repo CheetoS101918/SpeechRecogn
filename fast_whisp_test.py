@@ -20,7 +20,7 @@ class WhisperProcessor:
                    'medium',
                     device="cpu", 
                     compute_type="int8", 
-                    cpu_threads=8
+                    cpu_threads=4
                 )
                 logger.info("✅ Модель загружена!")
             else:
