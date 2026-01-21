@@ -25,13 +25,18 @@ jobs:
           push: True
           tags: ${{ secrets.DOCKER_USERNAME }}/tg-bot:test-ci
 
-  # deploy:
-  #   runs on: self-hosted
-  #   needs: build-n-push
+  deploy:
+    runs-on: self-hosted
+    needs: build-n-push
 
-  #   steps:
-  #     - name: pull-n-restart
-  #       run: |
+    steps:
+      - name: checkout-code
+        run: actions/checkout@v4
+
+      - name: deploy-with-compose
+        run: |
+        docker-compose up -d --remove-orphans
+        docker image prune -f
 
 
 
