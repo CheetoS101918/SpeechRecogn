@@ -35,8 +35,8 @@ jobs:
 
       - name: deploy-with-compose
         run: |
-        docker-compose up -d --remove-orphans
-        docker image prune -f
+          docker-compose up -d --remove-orphans
+          docker image prune -f
 
 
 
