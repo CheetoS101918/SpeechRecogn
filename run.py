@@ -36,3 +36,4 @@ if __name__ == '__main__':
         logging.critical("Критическая ошибка при запуске бота!", exc_info=True)  
         
 # i wrote this text just for a push while testing ci/cd
+#and one more time
