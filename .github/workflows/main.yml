@@ -37,10 +37,17 @@ jobs:
         run: |
           echo "${{ secrets.TOKEN }}" > .env
 
-      - name: deploy-with-compose
-        run: |
-          docker-compose up -d --remove-orphans
-          docker image prune -f
+      # - name: deploy-with-compose
+      #   run: |
+      #     docker-compose up -d --remove-orphans
+      #     docker image prune -f
+
+      - name: Docker Compose Action
+        uses: isbang/compose-action@v1.4.1
+        with:
+          compose-file: "docker-compose.yml"
+          down-flags: "--remove-orphans"
+          up-flags: "-d"
 
 
 
