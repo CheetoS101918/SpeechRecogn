@@ -1,8 +1,7 @@
-.venv
+.venv/
 .env
 __pycache__/
 voices/
-flows_test.py
-test.py
 scanner.py
 *.log
+.idea/
