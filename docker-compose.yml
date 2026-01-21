@@ -3,7 +3,7 @@ version: '3.8' # Версия синтаксиса docker-compose
 services: # Здесь описываются сервисы (контейнеры), которые нужно запустить
   bot: # Название нашего сервиса (может быть любым)
     image: slayem/tg-bot:test-ci
-    pull_policy: if_not_present #always
+    pull_policy: always
     restart: unless-stopped # Перезапускать контейнер, если он упал, но не перезапускать, если был остановлен вручную
     volumes: # Монтируем тома
       - ./voices:/app/voices:rw # Монтируем папку voices, чтобы файлы не терялись между перезапусками контейнера

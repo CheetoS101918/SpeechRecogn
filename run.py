@@ -24,7 +24,6 @@ if __name__ == '__main__':
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', # Формат сообщения
     handlers=[
         logging.StreamHandler(), # Вывод в консоль
-        logging.FileHandler('bot.log') 
     ]
 )
     try:
