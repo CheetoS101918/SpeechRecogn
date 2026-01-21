@@ -36,12 +36,13 @@ def load_config(path: str | None = None) -> Config:
         bot=TgBot(
             token=env('TOKEN'),
 #            admin_ids=list(map(int, env.list('ADMIN_IDS')))
-        ),
-        db=DatabaseConfig(
-            name=env('DB_NAME'),
-            host=env('DB_HOST'),
-            user=env('DB_USER'),
-            password=env('DB_PASSWORD'),
-            port=env('DB_PORT')
         )
     )
+    #     db=DatabaseConfig(
+    #         name=env('DB_NAME'),
+    #         host=env('DB_HOST'),
+    #         user=env('DB_USER'),
+    #         password=env('DB_PASSWORD'),
+    #         port=env('DB_PORT')
+    #     )
+    # )

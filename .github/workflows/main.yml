@@ -33,6 +33,10 @@ jobs:
       - name: checkout-code
         uses: actions/checkout@v4
 
+      - name: create-env-file
+        run: |
+          echo "${{ secrets.TOKEN }}" > .env
+
       - name: deploy-with-compose
         run: |
           docker-compose up -d --remove-orphans
