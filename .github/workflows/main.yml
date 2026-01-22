@@ -27,7 +27,7 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-    needs: build-n-push
+#    needs: build-n-push
 
     steps:
       - name: checkout-code
