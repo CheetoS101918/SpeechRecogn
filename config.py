@@ -24,7 +24,7 @@ class TgBot:
 @dataclass
 class Config:
     bot: TgBot
-    db: DatabaseConfig
+#    db: DatabaseConfig
 
 
 def load_config(path: str | None = None) -> Config:
