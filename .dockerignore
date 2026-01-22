@@ -1,5 +1,5 @@
 .env
-.venv/
+.venv
 voices/
 __pycache__/
 .git/
@@ -7,4 +7,6 @@ __pycache__/
 *.log
 .idea/
 .github/
-docker-compose.yml
+*.yml
+scanner.py
+Dockerfile
