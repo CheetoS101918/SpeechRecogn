@@ -3,7 +3,7 @@ name: home-server-cicd
 # trigger - when it runs
 on:
   push:
-    branches: [ "test-ci" ]
+    branches: [ "master" ]
 
 jobs:
   build-n-push:
