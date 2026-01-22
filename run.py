@@ -34,7 +34,3 @@ if __name__ == '__main__':
         print('Stop')
     except Exception as e:
         logging.critical("Критическая ошибка при запуске бота!", exc_info=True)  
-        
-# i wrote this text just for a push while testing ci/cd
-#and one more time
-# and again
