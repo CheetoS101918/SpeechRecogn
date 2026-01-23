@@ -9,7 +9,7 @@ config: Config = load_config('.env')
 adm_id = config.bot.admin_ids 
 
 
-class MyMiddleware(BaseMiddleware):
+class Notifier(BaseMiddleware):
     async def __call__(self, handler, event: Message, data):
         user = data.get("event_from_user")
         bot = data['bot']
