@@ -15,7 +15,7 @@ dp = Dispatcher()
 
 async def main():
     processor.load_model()
-    dp.update.outer_middleware(Notifier)
+    dp.update.outer_middleware(Notifier())
     dp.include_router(router)
     await dp.start_polling(bot)
 

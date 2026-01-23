@@ -15,16 +15,17 @@ class Notifier(BaseMiddleware):
         user = data.get("event_from_user")
         bot = data['bot']
         if user and not user.is_bot:
-            try:
-                await bot.send_message(
-                    adm_id,
-                    f"🚀 **Новый пользователь!**\n\n"
-                    f"Имя: {user.full_name}\n"
-                    f"ID: `{user.id}`\n"
-                    f"Username: @{user.username or 'отсутствует'}"
-                )
-            except Exception as e:
-                logger.error(f'error notifying admin about a new user: {e}')
+            if user.id != adm_id:
+                try:
+                    await bot.send_message(
+                        adm_id,
+                        f"🚀 **Новый пользователь!**\n\n"
+                        f"Имя: {user.full_name}\n"
+                        f"ID: `{user.id}`\n"
+                        f"Username: @{user.username or 'отсутствует'}"
+                    )
+                except Exception as e:
+                    logger.error(f'error notifying admin about a new user: {e}')
 
         result = await handler(event, data)
         return result
