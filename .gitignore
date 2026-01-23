@@ -3,4 +3,5 @@
 __pycache__/
 voices/
 *.log
+project_content.txt
 .idea/

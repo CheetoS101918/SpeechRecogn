@@ -2,6 +2,7 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.dispatcher.middlewares.base import BaseMiddleware
 from config import Config, load_config
+import logging
 
 
 logger = logging.getLogger(__name__)

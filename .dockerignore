@@ -10,3 +10,4 @@ __pycache__/
 *.yml
 scanner.py
 Dockerfile
+project_content.txt
