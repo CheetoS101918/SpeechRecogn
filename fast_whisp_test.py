@@ -3,7 +3,7 @@ import threading
 import logging
 
 
-logger = logging.getLogger(__name__) # __name__ автоматически даст имя модуля: 'fast_whisp_test'
+logger = logging.getLogger(__name__) 
 
 
 class WhisperProcessor:
@@ -20,7 +20,8 @@ class WhisperProcessor:
                    'medium',
                     device="cpu", 
                     compute_type="int8", 
-                    cpu_threads=4
+                    cpu_threads=4,
+                    download_root='/app/whisper_model'
                 )
                 logger.info("✅ Модель загружена!")
             else:

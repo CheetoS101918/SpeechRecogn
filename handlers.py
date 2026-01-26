@@ -63,10 +63,9 @@ async def transcribe(message: Message):
         loop = asyncio.get_running_loop()
         result = await loop.run_in_executor(pool, processor.transcribe, file_id)
         await message.reply_to_message.reply("".join(result))
+        os.remove(f'voices/{file_id}.ogg')
     except Exception as e:
         logger.error(f'AN ERROR OCCURED WHILE TRANCRIBITION: {e}')
         await message.reply_to_message.reply('ой, что-то пошло не так(\nприносим извинения за временные неудобства\nповторите попытку чуть позже')
-    finally:
-        os.remove(f'voices/{file_id}.ogg')
 
 
