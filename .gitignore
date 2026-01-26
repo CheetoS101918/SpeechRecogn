@@ -5,3 +5,4 @@ voices/
 *.log
 project_content.txt
 .idea/
+whisper_models

@@ -16,12 +16,11 @@ class WhisperProcessor:
             if self.model is None:
                 logger.info("🔄 Загрузка модели Whisper...")
                 self.model = WhisperModel(
-    #                    "large-v3", 
                    'medium',
                     device="cpu", 
                     compute_type="int8", 
                     cpu_threads=4,
-                    download_root='/app/whisper_model'
+                    download_root='/app/whisper_models'
                 )
                 logger.info("✅ Модель загружена!")
             else:
@@ -52,5 +51,4 @@ class WhisperProcessor:
         except Exception as e:
             return [f'an error occured: {e}']
 
-# Создаём глобальный экземпляр
 processor = WhisperProcessor()
