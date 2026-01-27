@@ -9,6 +9,6 @@ RUN pip install --no-cache-dir torch==2.5.1 --index-url https://download.pytorch
 COPY --chown=botuser:botuser requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY --chown=botuser:botuser . .
-RUN mkdir -p voices whisper_models && chmod 777 voices && chown -R botuser:botuser /app 
+RUN mkdir -p voices whisper_models && chmod 777 voices && chmod 777 whisper_models && chown -R botuser:botuser /app 
 USER botuser
 CMD ["python", "run.py"]

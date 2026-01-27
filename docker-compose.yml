@@ -1,6 +1,6 @@
 services: # Здесь описываются сервисы (контейнеры), которые нужно запустить
   bot: # Название нашего сервиса (может быть любым)
-    image: slayem/tg-bot:test_opti
+    image: slayem/tg-bot:latest
     pull_policy: always
     restart: unless-stopped 
     volumes: 
