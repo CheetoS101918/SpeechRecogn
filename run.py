@@ -5,17 +5,17 @@ from aiogram import Dispatcher, Bot
 from handlers import router
 from config import Config, load_config
 from fast_whisp_test import processor
-from middleware import Notifier
+#from middleware import Notifier
 
 config: Config = load_config('.env')
-
 bot = Bot(token=config.bot.token)
+
 dp = Dispatcher()
 
 
 async def main():
     processor.load_model()
-    dp.update.outer_middleware(Notifier())
+#    dp.update.outer_middleware(Notifier())
     dp.include_router(router)
     await dp.start_polling(bot)
 
@@ -31,6 +31,7 @@ if __name__ == '__main__':
     try:
         if not os.path.isdir('voices'):
             os.mkdir('voices')
+            os.mkdir('whisper_models')
         asyncio.run(main())
     except KeyboardInterrupt:
         print('Stop')

@@ -1,15 +1,22 @@
 from faster_whisper import WhisperModel
 import threading
 import logging
+from config import Config, load_config
+from huggingface_hub import login
 
 
 logger = logging.getLogger(__name__) 
+config: Config = load_config('.env')
+hf_token = config.bot.hf_token
 
 
 class WhisperProcessor:
-    def __init__(self):
+    def __init__(self, hf_token=None):
         self.model = None
         self._lock = threading.Lock()
+
+        if hf_token:
+            login(hf_token)
     
     def load_model(self):
         with self._lock:
@@ -51,4 +58,4 @@ class WhisperProcessor:
         except Exception as e:
             return [f'an error occured: {e}']
 
-processor = WhisperProcessor()
+processor = WhisperProcessor(hf_token=hf_token)

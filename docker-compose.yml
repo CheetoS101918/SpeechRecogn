@@ -1,12 +1,12 @@
-services: # Здесь описываются сервисы (контейнеры), которые нужно запустить
+services: 
   bot: # Название нашего сервиса (может быть любым)
     image: slayem/tg-bot:latest
     pull_policy: always
     restart: unless-stopped 
     volumes: 
-      - ./voices:/app/voices:rw 
-      - ./whisper_models:/app/whisper_models:rw
+      - ./voices:/app/voices:rwx 
+      - ./whisper_models:/app/whisper_models:rwx
     env_file: # Загружаем переменные окружения из файла
       - ../.env 
     environment: # Также можно задавать переменные окружения напрямую здесь
-      - PYTHONUNBUFFERED=1 # Полезно для корректного вывода логов из Python в консоль Docker
+      - PYTHONUNBUFFERED=1 
